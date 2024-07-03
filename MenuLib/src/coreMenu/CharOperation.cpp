@@ -63,7 +63,9 @@ char* floatToString(float num, int precision) {
     }
 
     snprintf(str, bufferSize - 2, "%.*f", precision, num);
-    strcat(str, "*C");
+    strcat(str, "C");
+    char degreeSymbol = 0xDF;
+    strncat(str, &degreeSymbol, 1);
 
     return str;
 }

@@ -136,6 +136,7 @@ Menu* initMenu(){
         menu->removeScreenByPtr = removeScreenByPtr;
 
         menu->footerUpdate = footerUpdate;
+        menu->lineUpdate = lineUpdate;
 
         menu->destruct = destructMenu;
 

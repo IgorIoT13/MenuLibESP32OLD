@@ -118,6 +118,7 @@ typedef struct Menu{
     char* (*getName) (Menu* menu);
 
     void (*footerUpdate) (Menu* menu, valLine* var);
+    void (*lineUpdate)   (Menu* menu, Line* line);
 
 
 
@@ -201,6 +202,9 @@ Screen* getScreen(Menu* menu, char* name);
 char* getName(Menu* menu);
 
 void footerUpdate(Menu* menu, valLine* var);
+
+void lineUpdate(Menu* menu, Line* line);
+
 
 
 //destructor

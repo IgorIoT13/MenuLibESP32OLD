@@ -40,7 +40,7 @@ void printScreen (Menu* menu){
     Screen* screen = menu->curr;
     if(screen && lcd){
         lcd->clear();
-        lcd->setCursor(0, cursor);
+        lcd->setCursor(8, cursor);
 
         char* header = screen->header->textGen(screen->header);
         char* curr;
@@ -216,5 +216,27 @@ void footerUpdate(Menu* menu, valLine* var){
         menu->lcd->setCursor(0, 3);
         menu->curr->footer->val = var;
         menu->lcd->print(menu->curr->footer->textGen(menu->curr->footer));
+    }
+}
+
+void lineUpdate(Menu* menu, Line* line){
+    if(menu && line && menu->curr && menu->curr->current){
+        Screen* screen = menu->curr;
+
+        if (line == screen->current){
+            menu->lcd->setCursor(0, 2);
+            menu->lcd->print("> ");
+            menu->lcd->print(textGeneratorCurr(line));
+
+        }
+        if(screen->footer == NULL && screen->current->next == line){
+            menu->lcd->setCursor(0, 3);
+            menu->lcd->print(line->textGen(line));
+
+        }
+        if(screen->current->prev == line && menu->curr->current != line){
+            menu->lcd->setCursor(0, 1);
+            menu->lcd->print(line->textGen(line));
+        }
     }
 }
